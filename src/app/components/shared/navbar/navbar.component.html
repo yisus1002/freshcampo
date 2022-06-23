@@ -1,0 +1,48 @@
+<!-- <header class=""> -->
+  <nav class="navbar  sticky-top  navbar-expand-md navbar-light bg-light ">
+   <div class="container-fluid d-flex flex-column">
+     <div class="col-12 d-flex">
+      <a class="navbar-brand col-2 col-sm-1 p-0 me-1"  [routerLink]="['home']" style="vertical-align: middle; align-items: center; display: flex;" >
+        <img src="https://i.ibb.co/SrKrzrC/logo.png" class="rounded d-inline-block align-text-top col-12 m-0 p-0">
+      </a>
+      <form class="col-6  d-flex justify-content-between bg-white ps-1 rounded-pill " style="overflow: hidden; height: 40px; margin: auto;" role="search">
+        <!-- (keyup)='buscarHeroe(buscarTexto.value)' -->
+        <input class="col-10 col-sm-11 pl-1 py-0 me-1 pe-0 " style="border: none; outline:none;"  type="search" placeholder="Buscar alimentos..." aria-label="Buscar"  #buscarTexto>
+        <!-- <input class="form-control me-1" type="search" placeholder="Buscar alimentos" aria-label="Search"> -->
+        <button class="btn me-2 p-0" style="border: none;" type="submit"><i class="text-primary fas fa-search"></i></button>
+      </form>
+
+      <div class=" d-flex justify-content-end">
+        <form class="d-flex " role="button-group">
+          <button type="submit" class="btn btn-sm btn-outline-success rounded-circle fw-bold mx-1 d-flex align-items-center" style="height: 30px; margin: auto;"><i class="fas fa-user"></i></button>
+          <button type="submit" class="btn btn-sm btn-outline-primary rounded-circle fw-bold mx-1 d-flex align-items-center" style="height: 30px; margin: auto;"><i class="fas fa-registered"></i></button>
+        </form>
+        <app-avatar style=" margin: auto;" ></app-avatar>
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="text-dark fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+
+     </div>
+     <div class="col-12 ">
+      
+       <div class="collapse navbar-collapse  align-items-center justify-content-center" id="navbarNavAltMarkup"  >
+        <div class="navbar-nav">
+          <a class="nav-link" aria-current="page" routerLinkActive="active"  [routerLink]="['home']">Home</a>
+          <a class="nav-link"  routerLinkActive="active" href="#">Nosotros</a> 
+          <a class="nav-link"  routerLinkActive="active" href="#">Mis productos</a>
+          <a class="nav-link"  routerLinkActive="active" href="#">Clientes</a>
+          <a class="nav-link"  routerLinkActive="active" href="#">Proveedor</a>
+          <a class="nav-link"  routerLinkActive="active" href="#">Productos</a>
+          <a class="nav-link"  routerLinkActive="active" href="#"><i class="fas fa-cart-arrow-down"></i> </a>
+        </div>
+       </div>
+
+     </div> 
+   </div>
+  </nav>
+<!-- </header> -->
+
+
+
+
