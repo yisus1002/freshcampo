@@ -1,17 +1,17 @@
-<div class="dropstart">
-    <button type="button " class="btn btn-sm  btn-secondary rounded-circle " data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fas fa-user"></i>
+<div class="dropstart" >
+    <button type="button " class="btn btn-sm p-0 rounded-circle " data-bs-toggle="dropdown" aria-expanded="false">
+      <img [src]="usuario.picture | noimage" class="img-fluid" style="border-radius: 100%; overflow: hidden; width: 30px; height: 30px;" alt="usuario">  
     </button>
 
     <ul class="dropdown-menu text-center" style="min-width: 300px;" aria-labelledby="dropdownMenuButton1"> 
-        <img src="https://i.ibb.co/SrKrzrC/logo.png" class="image border border-success" alt="usuario">  
+        <img [src]="usuario.picture | noimage" class="image border border-success" alt="usuario">  
       <div class="container-fluid d-flex flex-column">
-        <span>Jesus David Garcia Hernandez</span> 
-        <span>yisusgarcia1002@gmail.com</span> 
+        <span>{{usuario.given_name +' '+ usuario.family_name}} </span>
+        <span>{{usuario.email}}</span> 
       </div>
       <li><a class="dropdown-item" href="#">Mis compras</a></li>
       <li><a class="dropdown-item" href="#">Pedidos</a></li>
       <li><a class="dropdown-item" [routerLink]="['perfil']" >Perfil</a></li>
-      <li><a class="dropdown-item" href="#">Salir</a></li>
+      <li><a class="dropdown-item" (click)=" logout()">Salir</a></li>
     </ul>
   </div>

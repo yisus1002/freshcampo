@@ -13,11 +13,11 @@
       </form>
 
       <div class=" d-flex justify-content-end">
-        <form class="d-flex " role="button-group">
-          <button type="submit" class="btn btn-sm btn-outline-success rounded-circle fw-bold mx-1 d-flex align-items-center" style="height: 30px; margin: auto;"><i class="fas fa-user"></i></button>
-          <button type="submit" class="btn btn-sm btn-outline-primary rounded-circle fw-bold mx-1 d-flex align-items-center" style="height: 30px; margin: auto;"><i class="fas fa-registered"></i></button>
+        <form class="d-flex " *ngIf="!(auth.isAuthenticated$  | async)" role="button-group">
+          <button type="button" (click)="loginWithRedirect()"  class="btn btn-sm btn-outline-success rounded-circle fw-bold mx-1 d-flex align-items-center" style="height: 30px; margin: auto;"><i class="fas fa-user"></i></button>
+          <!-- <button type="button"  class="btn btn-sm btn-outline-primary rounded-circle fw-bold mx-1 d-flex align-items-center" style="height: 30px; margin: auto;"><i class="fas fa-registered"></i></button> -->
         </form>
-        <app-avatar style=" margin: auto;" ></app-avatar>
+        <app-avatar *ngIf="(auth.isAuthenticated$  | async)" style=" margin: auto;" ></app-avatar>
         <button class="navbar-toggler d-md-none ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <i class="text-dark fas fa-ellipsis-v"></i>
         </button>

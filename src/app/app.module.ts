@@ -1,3 +1,4 @@
+import { FreshcampoService } from './services/freshcampo.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,6 +13,12 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { ProductoComponent } from './components/producto/producto.component';
 
+
+// Import the module from the SDK
+import { AuthModule } from '@auth0/auth0-angular';
+import { NoimagePipe } from './pipes/noimage.pipe';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +28,24 @@ import { ProductoComponent } from './components/producto/producto.component';
     AvatarComponent,
     PerfilComponent,
     ClienteComponent,
-    ProductoComponent
+    ProductoComponent,
+    NoimagePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FeatureRoutingModule
+    FeatureRoutingModule,
+    // Import the module into the application, with configuration
+    AuthModule.forRoot({
+      domain: 'dev-nf0y8src.us.auth0.com',
+      clientId: 'KBtfwcIpyIW3zdYECBEqsUTqzh3021id',
+      cacheLocation: 'localstorage', 
+      useRefreshToken:true,}),
   ],
-  providers: [],
+  providers: [
+    FreshcampoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// 

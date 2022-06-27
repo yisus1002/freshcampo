@@ -1,3 +1,4 @@
+import { FreshcampoService } from './../../services/freshcampo.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private freshcampoService: FreshcampoService,
+
+  ) { }
 
   ngOnInit(): void {
   }

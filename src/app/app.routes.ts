@@ -5,6 +5,10 @@ import { HomeComponent } from './components/home/home.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 // import { PageNotFoundComponent } from './';
 
+// import { AuthGuard } from './guards/auth.guard';
+// import { AuthGuard } from '@auth0/auth0-angular';
+
+
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'perfil', component: PerfilComponent },
