@@ -1,17 +1,17 @@
 <!-- https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg -->
 <div class="my-3">
-    <div class="row shadow-sm p-3 mb-5 bg-body rounded">
-        <div class="col-md-3 border-right">
+    <div class="row p-3 mb-5 bg-body rounded">
+        <div class="col-md-3 m-1 border-right shadow-sm rounded">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img class="rounded-circle mt-5 border border-3 border-info " width="150px" [src]="usuario.picture | noimage">
                 <span class="font-weight-bold">{{usuario.given_name +' '+ usuario.family_name}}</span><span class="text-black-50">{{usuario.email}}</span><span> </span></div>
         </div>
-        <div class="col-md-5 border-right">
+        <div class="col-md-5 m-1 border-right shadow-sm  bg-body rounded">
             <div class="p-3 py-5">
                 <div class=" align-items-center mb-2">
                     <h4 class="text-center" >Configuración del perfil</h4>
                 </div>
-                <div class="row mt-2">
+                <div class="row mt-2 ">
                     <div class="col-12 d-flex justify-content-end">
                         <button class="btn btm-sm btn-outline-primary m-0 p-1 "
                         (click)="Habilitar=!Habilitar"
