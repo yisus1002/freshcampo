@@ -18,6 +18,8 @@ import { ProductoComponent } from './components/producto/producto.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { NoimagePipe } from './pipes/noimage.pipe';
 
+//Haccer peticiones 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,9 @@ import { NoimagePipe } from './pipes/noimage.pipe';
       clientId: 'KBtfwcIpyIW3zdYECBEqsUTqzh3021id',
       cacheLocation: 'localstorage', 
       useRefreshToken:true,}),
+
+      //
+      HttpClientModule,
   ],
   providers: [
     FreshcampoService

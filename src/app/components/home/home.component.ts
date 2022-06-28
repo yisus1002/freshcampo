@@ -1,3 +1,4 @@
+import { Cliente } from './../../models/cliente';
 import { FreshcampoService } from './../../services/freshcampo.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,12 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  Cliente: Cliente[]=[];
+
   constructor(
     private freshcampoService: FreshcampoService,
 
   ) { }
 
   ngOnInit(): void {
+    this.cargarCliente();
+  }
+  cargarCliente(){
+    this.freshcampoService.getCliente().subscribe(
+      data =>{
+        console.log(data);
+        this.Cliente=data;
+      }
+    )
   }
 
 }
