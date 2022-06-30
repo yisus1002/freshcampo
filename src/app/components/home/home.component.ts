@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   cargarCliente(){
     this.freshcampoService.getCliente().subscribe(
       data =>{
-        console.log(data);
+        // console.log(data);
         this.Cliente=data;
       }
     )

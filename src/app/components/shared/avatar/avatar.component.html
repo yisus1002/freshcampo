@@ -1,13 +1,13 @@
 <div class="dropstart" >
     <button type="button " class="btn btn-sm p-0 rounded-circle " data-bs-toggle="dropdown" aria-expanded="false">
-      <img [src]="usuario.picture | noimage" class="img-fluid" style="border-radius: 100%; overflow: hidden; width: 30px; height: 30px;" alt="usuario">  
+      <img [src]="Cliente['avatar']" class="img-fluid" style="border-radius: 100%; overflow: hidden; width: 30px; height: 30px;" alt="usuario">  
     </button>
 
     <ul class="dropdown-menu text-center" style="min-width: 300px;" aria-labelledby="dropdownMenuButton1"> 
-        <img [src]="usuario.picture | noimage" class="image border border-success" alt="usuario">  
+        <img [src]="Cliente['avatar'] " class="image border border-success" alt="usuario">  
       <div class="container-fluid d-flex flex-column">
-        <span>{{usuario.given_name +' '+ usuario.family_name}} </span>
-        <span>{{usuario.email}}</span> 
+        <span>{{Cliente['nombre'] +' '+ Cliente['apellido']}} </span>
+        <span class="text-black-50  text-break">{{Cliente['correo']}}</span> 
       </div>
       <li><a class="dropdown-item" href="#">Mis compras</a></li>
       <li><a class="dropdown-item" href="#">Pedidos</a></li>

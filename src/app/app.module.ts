@@ -1,3 +1,4 @@
+
 import { FreshcampoService } from './services/freshcampo.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +13,13 @@ import { FeatureRoutingModule } from './app.routes';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { ProductoComponent } from './components/producto/producto.component';
+
+// para trabajar con formularios
+import { FormsModule } from '@angular/forms';
+
+//para realizar alertas 
+// import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 // Import the module from the SDK
@@ -31,7 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     PerfilComponent,
     ClienteComponent,
     ProductoComponent,
-    NoimagePipe
+    NoimagePipe,
   ],
   imports: [
     BrowserModule,
@@ -43,9 +51,11 @@ import { HttpClientModule } from '@angular/common/http';
       clientId: 'KBtfwcIpyIW3zdYECBEqsUTqzh3021id',
       cacheLocation: 'localstorage', 
       useRefreshToken:true,}),
-
       //
       HttpClientModule,
+      FormsModule,
+      BrowserAnimationsModule,
+      // ToastrModule.forRoot(),
   ],
   providers: [
     FreshcampoService
