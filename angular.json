@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "fresh_campo:build:production",
+            "firebaseProject": "freshcampo-f3236",
+            "firebaseHostingSite": "freshcampo-f3236"
+          }
         }
       }
     }

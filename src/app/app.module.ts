@@ -28,6 +28,9 @@ import { NoimagePipe } from './pipes/noimage.pipe';
 
 //Haccer peticiones 
 import { HttpClientModule } from '@angular/common/http';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -55,6 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
       HttpClientModule,
       FormsModule,
       BrowserAnimationsModule,
+      provideFirebaseApp(() => initializeApp(environment.firebase)),
+      provideStorage(() => getStorage()),
       // ToastrModule.forRoot(),
   ],
   providers: [

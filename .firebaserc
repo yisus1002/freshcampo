@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "freshcampo-f3236": {
+      "hosting": {
+        "fresh_campo": [
+          "freshcampo-f3236"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "freshcampo-f3236"
+  }
+}

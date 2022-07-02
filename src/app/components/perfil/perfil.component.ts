@@ -1,3 +1,4 @@
+import { CargarImagenService } from './../../services/cargar-imagen.service';
 import { FreshcampoService } from './../../services/freshcampo.service';
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit { 
-  Habilitar:boolean=true;
+  // Habilitar:boolean=true;
   loading:boolean=false;
   id:any=localStorage.getItem('idUser'); 
   usuario:any={};
@@ -25,35 +26,42 @@ export class PerfilComponent implements OnInit {
   }; 
   constructor(public auth: AuthService,
               private router: Router,
-              public FreshcampoService:FreshcampoService              ){  
-                this.id=JSON.parse(this.id); 
-                // this.detalleCliente();
+              public FreshcampoService:FreshcampoService,
+              public CargarImagenService:CargarImagenService, ){  
+                this.id=JSON.parse(this.id);  
+                console.log(this.CargarImagenService.images);
               }
-  ngOnInit(): void {
-    // console.log('ngon');
+  ngOnInit(): void { 
     this.detalleCliente();
   } 
 
  
   volver(){
     this.router.navigate(['/home'])
-    this.Habilitar=true;
-  }
-  habilitar(){
-    this.Habilitar=true;
-  }
+    this.CargarImagenService.habilitar=true;
+  } 
   detalleCliente(){
     this.FreshcampoService.getCliente_Detalle(this.id).subscribe((data:any)=>{
       this.usuario=data 
-      this.Cliente=data;
-      // console.log(this.Cliente)
+      this.Cliente=data; 
     });
   }
 
-  actualizar(){
+ async actualizar(){
+    if(this.CargarImagenService.images.length === 0){
+      this.subircambio();
+    }else{
+      this.Cliente['avatar']=this.CargarImagenService.images[this.CargarImagenService.images.length-1]
+      this.subircambio();
+    }
+
+
+  }
+  subircambio(){
     this.FreshcampoService.putCliente(this.id, this.Cliente).subscribe(ele=>{
-      // console.log(ele) 
       if(ele){
+        setTimeout(() => {  
+          this.loading=false;  
         Swal.fire({
           title: 'Datos actualizados', 
           icon: 'success',
@@ -62,14 +70,12 @@ export class PerfilComponent implements OnInit {
         .then(() => {
           window.location.reload();
       });
+    }, 1000);
       }
     });
-    this.Habilitar=true;
+    this.CargarImagenService.habilitar=true;
     this.loading=true;
-    setTimeout(() => {  
-      this.loading=false; 
-    }, 1000);
-
+   
   }
 
 }
