@@ -86,9 +86,7 @@ id:any='';
       this.Cliente['idg']=data['idg'];
       this.Cliente['rol']=data['rol']; 
       
-    });
-    
-    // this.FreshcampoService.obtenerUser('tok'+this.FreshcampoService.tok);
+    }); 
   }
  
 }
