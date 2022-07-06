@@ -1,4 +1,20 @@
-<div class="container">
-    <p>home works!</p>
+<div class="container-fluid d-flex flex-wrap mx-0 px-1">
+    <div class="col-12 mb-1 col-sm-2 col-md-2 col-lg-1 col-xl-1"> 
+            <div class="list-group d-flex flex-row flex-sm-column border border-1" style="font-size: .76rem;" >
+                <button type="button" class="px-1 text-center list-group-item list-group-item-action active" aria-current="true">Todos</button>
+                <button type="button" class="px-1 text-center list-group-item list-group-item-action">verduras</button>
+                <button type="button" class="px-1 text-center list-group-item list-group-item-action">Carnes</button>
+                <button type="button" class="px-1 text-center list-group-item list-group-item-action">Lacteos</button>
+                <button type="button" class="px-1 text-center list-group-item list-group-item-action">proteina</button>
+                <button type="button" class="px-1 text-center list-group-item list-group-item-action">Frutas</button>
+            </div> 
+    </div>
+    <app-producto class="container col-12 col-sm-10 col-md-10 col-lg-7"></app-producto>
+    <div class="d-none d-lg-block col-12 col-lg-4 border bg-dark text-white">
+        mapa
+    </div>
 
 </div>
+<button class="btn btn-sm btn-primary sticky-bottom rounded-circle mx-2 mt-2 d-lg-none d-lg-block" style="">
+    <i class="fas fa-map"></i>
+</button>
