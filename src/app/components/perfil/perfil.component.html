@@ -1,50 +1,60 @@
 <!-- https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg -->
-<div class="my-3" *ngIf="Cliente" >
-    <div class="row p-3 mb-5 bg-body rounded">
-        <div class="col-md-3 m-1 border-right shadow-sm rounded">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img class="img-fluid rounded-circle mt-5 border border-3 border-info " style="height: 150px; width:150px;" [src]="usuario.avatar ">
-                <span class="font-weight-bold">{{Cliente.nombre+ ' ' + Cliente.apellido}}</span>
-                <span class="text-black-50 text-break">{{usuario.correo}}</span><span> </span></div>
-        </div>
-        <div class="col-md-5 m-1 border-right shadow-sm  bg-body rounded">
-            <div class="p-3 py-5">
-                <div class=" align-items-center mb-2">
-                    <h4 class="text-center" >Configuración del perfil</h4>
-                </div>
-                <div class="row mt-2 "> 
-                    <div class="col-12 d-flex justify-content-end">
-                        <button class="btn btm-sm btn-outline-primary m-0 p-1 "
-                        (click)="CargarImagenService.habilitar=!CargarImagenService.habilitar"
-                        ><i class="fas fa-pencil-alt"></i></button>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="labels">Nombres</label>
-                        <input  [disabled]="CargarImagenService.habilitar" type="text" class="form-control" placeholder="first name" [(ngModel)]="Cliente.nombre">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="labels">Apellidos</label>
-                        <input  [disabled]="CargarImagenService.habilitar" type="text" class="form-control"  placeholder="last name" [(ngModel)]="Cliente.apellido">
-                    </div>
-                    <div class="my-3">
-                        <label for="formFileSm" class="form-label labels col-8">Cambiar imagen</label>
-                        <div *ngIf="CargarImagenService.activo" class="spinner-grow col-2 text-success " role="status">
-                            <span class="visually-hidden">Loading...</span>
-                          </div>
-                        <input  [disabled]="CargarImagenService.habilitar" class="form-control form-control-sm" id="formFileSm" type="file" accept=".jpg , .png, .jpeg" (change)="CargarImagenService.cargarImagen($event)">
-                    </div>
-                </div> 
-                <div class="mt-5 text-center d-flex justify-content-evenly">
-                    <button class="btn btn-primary profile-button " [disabled]="CargarImagenService.habilitar" type="submit" (click)="actualizar()">
-                        <span *ngIf="!loading">Guardar</span>
-                        <div  *ngIf="loading" class="spinner-border text-danger m-0 p-0" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                          </div>
-                    </button>
-                    <!-- <button class="btn btn-primary profile-button " [disabled]="Habilitar" type="button"></button> -->
-                    <button type="button" (click)="volver()" class="btn btn-secondary"  >Volver</button>
-                </div>
+<div class="" *ngIf="(auth.isAuthenticated$  | async)">
+    <div class="my-3" *ngIf="Cliente"  >
+        <div class="row p-3 mb-5 bg-body rounded">
+            <div class="col-md-3 m-1 border-right shadow-sm rounded">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="img-fluid rounded-circle mt-5 border border-3 border-info " style="height: 150px; width:150px;" [src]="usuario.avatar ">
+                    <span class="font-weight-bold">{{Cliente.nombre+ ' ' + Cliente.apellido}}</span>
+                    <span class="text-black-50 text-break">{{usuario.correo}}</span><span> </span></div>
             </div>
-        </div> 
+            <div class="col-md-5 m-1 border-right shadow-sm  bg-body rounded">
+                <div class="p-3 py-5">
+                    <div class=" align-items-center mb-2">
+                        <h4 class="text-center" >Configuración del perfil</h4>
+                    </div>
+                    <div class="row mt-2 "> 
+                        <div class="col-12 d-flex justify-content-end">
+                            <button class="btn btm-sm btn-outline-primary m-0 p-1 "
+                            (click)="CargarImagenService.habilitar=!CargarImagenService.habilitar"
+                            ><i class="fas fa-pencil-alt"></i></button>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Nombres</label>
+                            <input  [disabled]="CargarImagenService.habilitar" type="text" class="form-control" placeholder="first name" [(ngModel)]="Cliente.nombre">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Apellidos</label>
+                            <input  [disabled]="CargarImagenService.habilitar" type="text" class="form-control"  placeholder="last name" [(ngModel)]="Cliente.apellido">
+                        </div>
+                        <div class="my-3">
+                            <label for="formFileSm" class="form-label labels col-8">Cambiar imagen</label>
+                            <div *ngIf="CargarImagenService.activo" class="spinner-grow col-2 text-success " role="status">
+                                <span class="visually-hidden">Loading...</span>
+                              </div>
+                            <input  [disabled]="CargarImagenService.habilitar" class="form-control form-control-sm" id="formFileSm" type="file" accept=".jpg , .png, .jpeg" (change)="CargarImagenService.cargarImagen($event)">
+                        </div>
+                    </div> 
+                    <div class="mt-5 text-center d-flex justify-content-evenly">
+                        <button class="btn btn-primary profile-button " [disabled]="CargarImagenService.habilitar" type="submit" (click)="actualizar()">
+                            <span *ngIf="!loading">Guardar</span>
+                            <div  *ngIf="loading" class="spinner-border text-danger m-0 p-0" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                              </div>
+                        </button>
+                        <!-- <button class="btn btn-primary profile-button " [disabled]="Habilitar" type="button"></button> -->
+                        <button type="button" (click)="volver()" class="btn btn-secondary"  >Volver</button>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div> 
+</div>
+<div  *ngIf="!(auth.isAuthenticated$  | async)" class="container d-flex align-items-center justify-content-center rounded-4 shadow-lg" style="height: 40vh ;">
+    <div class="letra"> 
+        Por favor inicia sesión ...
+    <span class="placeholder col-6"></span>
+    <span class="placeholder w-75  bg-success"></span>
+    <!-- <span class="placeholder" style="width: 25%;"></span> -->
     </div>
-</div> 
+</div>
