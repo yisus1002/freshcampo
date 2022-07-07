@@ -31,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { MisproductosComponent } from './components/misproductos/misproductos.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     ClienteComponent,
     ProductoComponent,
     NoimagePipe,
+    MisproductosComponent,
   ],
   imports: [
     BrowserModule,

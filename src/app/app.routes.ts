@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HomeComponent } from './components/home/home.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { MisproductosComponent } from './components/misproductos/misproductos.component';
 // import { PageNotFoundComponent } from './';
 
 // import { AuthGuard } from './guards/auth.guard';
@@ -12,7 +13,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'perfil', component: PerfilComponent },
-    // { path: 'path3', component: Name3Component },
+    { path: 'misproductos', component: MisproductosComponent },
     // { path: 'path4', component: Name4Component },
     { path: '**',pathMatch: 'full', redirectTo: 'home' }
 
