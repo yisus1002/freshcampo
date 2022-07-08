@@ -32,6 +32,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { MisproductosComponent } from './components/misproductos/misproductos.component';
+import { NosotrosComponent } from './components/nosotros/nosotros.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MisproductosComponent } from './components/misproductos/misproductos.co
     ProductoComponent,
     NoimagePipe,
     MisproductosComponent,
+    NosotrosComponent,
   ],
   imports: [
     BrowserModule,

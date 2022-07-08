@@ -1,3 +1,4 @@
+import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -14,7 +15,7 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'perfil', component: PerfilComponent },
     { path: 'misproductos', component: MisproductosComponent },
-    // { path: 'path4', component: Name4Component },
+    { path: 'nosotros', component: NosotrosComponent },
     { path: '**',pathMatch: 'full', redirectTo: 'home' }
 
     //{ path: 'path/:routeParam', component: MyComponent },

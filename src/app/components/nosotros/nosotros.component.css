@@ -1,0 +1,13 @@
+.alto{
+    height: 100%;
+    width: 100%;
+}
+.img{
+object-fit: cover;
+}
+.img2{
+    overflow: hidden;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
