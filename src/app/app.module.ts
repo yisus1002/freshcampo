@@ -33,6 +33,7 @@ import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { MisproductosComponent } from './components/misproductos/misproductos.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
+import { RolPipe } from './pipes/rol.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { NosotrosComponent } from './components/nosotros/nosotros.component';
     NoimagePipe,
     MisproductosComponent,
     NosotrosComponent,
+    RolPipe,
   ],
   imports: [
     BrowserModule,

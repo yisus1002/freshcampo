@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { MisproductosComponent } from './components/misproductos/misproductos.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
 // import { PageNotFoundComponent } from './';
 
 // import { AuthGuard } from './guards/auth.guard';
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: 'perfil', component: PerfilComponent },
     { path: 'misproductos', component: MisproductosComponent },
     { path: 'nosotros', component: NosotrosComponent },
+    { path: 'cliente', component: ClienteComponent },
     { path: '**',pathMatch: 'full', redirectTo: 'home' }
 
     //{ path: 'path/:routeParam', component: MyComponent },

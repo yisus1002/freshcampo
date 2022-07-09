@@ -1,1 +1,38 @@
-<p>cliente works!</p>
+<div class="container my-2" *ngIf="(auth.isAuthenticated$  | async) && admin===1">
+    <h1 class="text-center h4">Listado de usuarios</h1>
+    <form class="col-6 my-2 d-flex justify-content-between bg-white ps-1 rounded-pill shadow-lg" style="overflow: hidden; height: 40px; margin: auto;" role="search">
+        <!-- (keyup)='buscarHeroe(buscarTexto.value)' -->
+        <input class="col-10 col-sm-11 pl-1 py-0 me-1 pe-0 " style="border: none; outline:none;"  type="search" placeholder="Buscar asuarios..." aria-label="Buscar"  #buscarTexto>
+        <!-- <input class="form-control me-1" type="search" placeholder="Buscar alimentos" aria-label="Search"> -->
+        <button class="btn me-2 p-0" style="border: none;" type="submit"><i class="text-primary fas fa-search"></i></button>
+      </form>
+    <div class="table-responsive shadow">
+        <table class="table table-hover"> 
+            <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Correo</th> 
+                  <th scope="col">Rol</th>
+                  <th scope="col" class="text-center">cambiar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cliente of Client ; let i=index">
+                  <th class="border" scope="row">{{i +1 }}</th>
+                  <td class="border">{{cliente.idg}}</td>
+                  <td class="border">{{cliente.nombre +" "+ cliente.apellido}}</td>
+                  <td class="border">{{cliente.correo}}</td>
+                  <td class="border">{{cliente.rol | rol}}</td>
+                  <td class="border">
+                   <div class="container d-flex flex-wrap justify-content-center align-items-center px-0">
+                    <button class="btn m-1 btn-sm btn-primary"  [ngClass]="{ 'disabled':cliente.id===tok }" (click)="cambiar_rol(cliente.id, 1)">Admin</button>
+                    <button class="btn m-1 btn-sm btn-success"  [ngClass]="{ 'disabled':cliente.id===tok }" (click)="cambiar_rol(cliente.id, 0)">User</button>
+                   </div>
+                  </td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+</div>
