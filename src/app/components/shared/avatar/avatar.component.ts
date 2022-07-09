@@ -85,7 +85,7 @@ id:any='';
       this.Cliente['correo']=data['correo'];
       this.Cliente['idg']=data['idg'];
       this.Cliente['rol']=data['rol']; 
-      
+      this.FreshcampoService.id=this.Cliente['rol']
     }); 
   }
  

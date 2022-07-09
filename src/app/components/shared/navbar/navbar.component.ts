@@ -22,14 +22,14 @@ export class NavbarComponent implements OnInit {
     } 
 
   ngOnInit(): void { 
-    this.fs.rol()
-    this.vericar_rol();
+    // this.fs.rol()
+    // this.vericar_rol();
   }
-  vericar_rol(){
-    this.fs.getCliente_Detalle(this.fs.id).subscribe((data:any)=>{
-      this.rol=data['rol']
-      console.log(this.rol)
-    })
-  }
+  // vericar_rol(){
+  //   this.fs.getCliente_Detalle(this.fs.id).subscribe((data:any)=>{
+  //     this.rol=data['rol']
+  //     console.log(this.rol)
+  //   })
+  // }
 
 }

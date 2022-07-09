@@ -52,11 +52,11 @@ export class FreshcampoService {
     });  
   }
 
-  public rol(){
-    this.id=localStorage.getItem('idUser')
-    this.id=JSON.parse(this.id)
-    console.log(this.id)
-  }
+  // public rol(){
+  //   this.id=localStorage.getItem('idUser')
+  //   this.id=JSON.parse(this.id)
+  //   console.log(this.id)
+  // }
 
   get refresh$(){
     return this._refresh$;
