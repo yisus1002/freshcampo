@@ -2,6 +2,7 @@
 import { FreshcampoService } from './../../services/freshcampo.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cliente',
@@ -52,9 +53,15 @@ export class ClienteComponent implements OnInit {
       this.Cliente['rol']=val;
       this.Cliente['idg']=data['idg'];
       this.Cliente['avatar']=data['avatar'];
-      console.log(this.Cliente)
+      // console.log(this.Cliente)
       this.cliente.putCliente(id, this.Cliente ).subscribe(data=>{
-      console.log(data)
+      // console.log(data)
+      if(data)
+      Swal.fire({
+        title: 'Rol Cambiado', 
+        icon: 'success',
+        confirmButtonText: `OK!` , 
+      })
       this.detalle();
     })
     })
