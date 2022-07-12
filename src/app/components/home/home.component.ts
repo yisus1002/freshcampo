@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Cliente } from './../../models/cliente';
 import { FreshcampoService } from './../../services/freshcampo.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,24 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  filtro:string = 'Todos'
   Cliente: Cliente[]=[];
-
+  
   constructor(
     private freshcampoService: FreshcampoService,
+    public router: Router
 
   ) { }
 
   ngOnInit(): void {
-    this.cargarCliente();
   }
-  cargarCliente(){
-    this.freshcampoService.getCliente().subscribe(
-      data =>{
-        // console.log(data);
-        this.Cliente=data;
-      }
-    )
+
+  filtrar(val:any){
+    this.filtro =''
+    this.filtro = val
+
   }
 
 }
