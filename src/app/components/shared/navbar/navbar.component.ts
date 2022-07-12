@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+// import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { FreshcampoService } from 'src/app/services/freshcampo.service';
 
@@ -11,25 +12,36 @@ import { FreshcampoService } from 'src/app/services/freshcampo.service';
 export class NavbarComponent implements OnInit {
 
   rol:any=0;
-
+  autentificado:boolean=true; 
+  ActivatedRoute: any;
   constructor(
-    private router: Router,
+    public router: Router,
     public auth: AuthService,
-    public fs:FreshcampoService) {
-     }
-     loginWithRedirect(){
+    public fs:FreshcampoService) { }
+    
+    
+    
+    
+    loginWithRedirect(){
       this.auth.loginWithRedirect();
-    } 
+    }
+    // this.router.navigate([`/${ruta}`])
 
+    navegar(ruta:any){
+
+      this.auth.isAuthenticated$.subscribe((aut: any) => {
+        if(aut) { 
+          this.router.navigate([`/${ruta}`]) 
+        }else {
+          this.loginWithRedirect() 
+        }
+      })
+    }
+
+
+    
   ngOnInit(): void { 
-    // this.fs.rol()
-    // this.vericar_rol();
   }
-  // vericar_rol(){
-  //   this.fs.getCliente_Detalle(this.fs.id).subscribe((data:any)=>{
-  //     this.rol=data['rol']
-  //     console.log(this.rol)
-  //   })
-  // }
+
 
 }

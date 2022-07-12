@@ -35,6 +35,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { MisproductosComponent } from './components/misproductos/misproductos.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { RolPipe } from './pipes/rol.pipe';
+import { CarritoComponent } from './components/carrito/carrito.component';
+import { HistorialComponent } from './components/historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { RolPipe } from './pipes/rol.pipe';
     MisproductosComponent,
     NosotrosComponent,
     RolPipe,
-    MapaComponent
+    MapaComponent,
+    CarritoComponent,
+    HistorialComponent
   ],
   imports: [
     BrowserModule,

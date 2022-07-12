@@ -20,12 +20,12 @@
               </thead>
               <tbody>
                 <tr *ngFor="let cliente of Client ; let i=index">
-                  <th class="border" scope="row">{{i +1 }}</th>
-                  <td class="border">{{cliente.idg}}</td>
-                  <td class="border">{{cliente.nombre +" "+ cliente.apellido}}</td>
-                  <td class="border">{{cliente.correo}}</td>
-                  <td class="border">{{cliente.rol | rol}}</td>
-                  <td class="border">
+                  <th  scope="row">{{i +1 }}</th>
+                  <td >{{cliente.idg}}</td>
+                  <td >{{cliente.nombre +" "+ cliente.apellido}}</td>
+                  <td >{{cliente.correo}}</td>
+                  <td >{{cliente.rol | rol}}</td>
+                  <td >
                    <div class="container d-flex flex-wrap justify-content-center align-items-center px-0">
                     <button class="btn m-1 btn-sm btn-primary"  [ngClass]="{ 'disabled':cliente.id===tok }" (click)="cambiar_rol(cliente.id, 1)">Admin</button>
                     <button class="btn m-1 btn-sm btn-success"  [ngClass]="{ 'disabled':cliente.id===tok }" (click)="cambiar_rol(cliente.id, 0)">User</button>

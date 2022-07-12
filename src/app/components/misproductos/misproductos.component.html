@@ -1,9 +1,8 @@
-<div class="container-fluid mt-2">
+<div class="container-fluid mt-2" *ngIf="(auth.isAuthenticated$  | async)">
     <h1 class="text-center h4">Mis Productos</h1>
     <button class="btn btn-primary rounded-circle mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Publicar">
         <i class="fas fa-plus"></i>
     </button>
-
 
     
 <!-- Modal -->
@@ -20,11 +19,11 @@
                     <label for="exampleFormControlInput1" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese el nombre del producto">
                   </div>
-                  <select class="form-select" aria-label="Disabled select example">
+                  <select class="form-select mb-3" aria-label="Disabled select example">
                     <option selected>Seleccionar el tipo de producto</option>
                     <option value="Verdura">Verdura</option>
+                    <option value="Granos">Granos</option>
                     <option value="Frutas">Frutas</option>
-                    <option value="Carnes">Carnes</option>
                     <option value="Lacteos">Lacteos</option>
                     <option value="Proteina">Proteina</option>
                   </select>

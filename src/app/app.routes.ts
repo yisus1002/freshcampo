@@ -1,3 +1,5 @@
+import { HistorialComponent } from './components/historial/historial.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -18,6 +20,8 @@ const routes: Routes = [
     { path: 'misproductos', component: MisproductosComponent },
     { path: 'nosotros', component: NosotrosComponent },
     { path: 'cliente', component: ClienteComponent },
+    { path: 'carrito', component: CarritoComponent },
+    { path: 'historial', component: HistorialComponent },
     { path: '**',pathMatch: 'full', redirectTo: 'home' }
 
     //{ path: 'path/:routeParam', component: MyComponent },
