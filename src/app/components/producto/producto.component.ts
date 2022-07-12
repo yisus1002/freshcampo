@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
   selector: 'app-producto',
@@ -7,17 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-  // items:any=
-  items:any[]= [
-  {id: 1, name:'Superman'},
-  {id: 2, name:'Batman'},
-  {id: 5, name:'BatGirl'},
-  {id: 3, name:'Robin'},
-  {id: 4, name:'Flash'}
-];
+  
 anio:any;
-constructor() {
+constructor(public pro:ProductoService) {
   this.anio= new Date();
+  // console.log(pro.Pro) 
  }
  today: Date = new Date();
  pipe = new DatePipe('en-US');

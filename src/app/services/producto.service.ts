@@ -3,21 +3,27 @@ import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FreshcampoService } from './freshcampo.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
   producto:Producto[]=[];
+  Pro:any[]=[];
+
   idc:any=localStorage.getItem('idUser'); 
   
   api= 'https://62b2349620cad3685c8b152c.mockapi.io/Cliente/'
 
   constructor(private http:HttpClient,
-              private auth:AuthService) {
+              private auth:AuthService,
+              private us: FreshcampoService) {
                 this.idc=JSON.parse(this.idc); 
                 console.log('El servicio producto esta listo '+ this.idc)
-                this.verproducto()
+                // this.verproducto()
+                this.listarproductos()
+                
                }
   public getProductoCliente(id:any):Observable<Producto[]>{
     return this.http.get<Producto[]>(`${this.api}${id}/Producto`);
@@ -45,6 +51,21 @@ export class ProductoService {
   verproducto(){
     this.getProductoCliente(this.idc).subscribe((data:any)=>{
       console.log(data)
+    })
+  }
+
+  listarproductos(){
+    this.us.getCliente().subscribe((dat:any)=>{
+      for(var i=0;i<dat.length;i++){ 
+        this.getProductoCliente(i+1).subscribe((dat:any)=>{
+          if(dat.length >0){ 
+            for(var i=0;i<dat.length;i++){ 
+              this.Pro.push(dat[i]) 
+              // console.log(this.Pro)
+            }
+          }  
+        })
+      }
     })
   }
   

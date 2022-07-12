@@ -13,6 +13,7 @@ export class MisproductosComponent implements OnInit {
               public Ps: ProductoService) { }
 
   ngOnInit(): void {
+    this.Ps.verproducto()
   }
 
 }

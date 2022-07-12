@@ -1,11 +1,12 @@
 <div class= "row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-  <div class="col" *ngFor="let item of items">
+  <div class="col" *ngFor="let pro of pro.Pro; let i=index">
   <div class="card border-0 shadow "  >
-    <img src="https://i.ibb.co/SrKrzrC/logo.png" class="p-1 col-12" alt="..." style="overflow: hidden;">
+    <img [src]="pro.img+'/'+i" class="p-1 col-12" [alt]="pro.tipo" style="overflow: hidden;">
     <div class="col-12 card-body">
-      <h6 class="card-title p-0 d-flex justify-content-between ">Card title <span style="font-size: 12px;" class="  bg-primary rounded-4 p-1 text-white">categoria</span> </h6>
-      <p class="card-text">Descripción</p>
-      <p class="card-text"> Cantidad disponible</p>
+      <h6 class="card-title p-0 d-flex justify-content-between ">{{pro.nombre}}<span style="font-size: 12px;" class="  bg-primary rounded-4 p-1 text-white">{{pro.tipo}}</span> </h6>
+      <p class="card-text">{{pro.descripcion}}</p>
+      <p class="card-text my-1">Cantidad disponible: <span>{{pro.cantidad}}</span></p>
+      <p class="card-text my-1">Precio unidad $ <span>{{pro.precio}} <span class="text-muted">COP</span></span></p>
       <p class="card-text"> 
         <button type="button" title="Agregar al carrito" class="btn btn-sm btn-primary ">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -14,7 +15,7 @@
         </button>
       </p>
       <div class="card-text d-flex justify-content-between">
-        <small class="text-muted">{{todayWithPipe}}</small> 
+        <small class="text-muted">{{pro.fecha}}</small> 
         <div class="">
             <small class="text-muted mx-2 " style="font-size: .76rem;">Jesus david</small>
             <button type="button " class="btn btn-sm p-0  border-0 " style="overflow: hidden;">
