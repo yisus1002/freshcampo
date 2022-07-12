@@ -1,3 +1,4 @@
+import { ProductoService } from './../../services/producto.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MisproductosComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService,
+              public Ps: ProductoService) { }
 
   ngOnInit(): void {
   }
