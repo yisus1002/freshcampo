@@ -1,3 +1,4 @@
+import { MapaComponent } from './components/shared/mapa/mapa.component';
 
 import { FreshcampoService } from './services/freshcampo.service';
 import { NgModule } from '@angular/core';
@@ -49,6 +50,7 @@ import { RolPipe } from './pipes/rol.pipe';
     MisproductosComponent,
     NosotrosComponent,
     RolPipe,
+    MapaComponent
   ],
   imports: [
     BrowserModule,
