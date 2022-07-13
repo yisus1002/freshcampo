@@ -14,36 +14,34 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="">
+            <!-- <form action=""> -->
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese el nombre del producto">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese el nombre del producto"  [(ngModel)]="Ps.Producto.nombre">
                   </div>
-                  <select class="form-select mb-3" aria-label="Disabled select example">
-                    <option selected>Seleccionar el tipo de producto</option>
-                    <option value="Verdura">Verdura</option>
-                    <option value="Granos">Granos</option>
-                    <option value="Frutas">Frutas</option>
-                    <option value="Lacteos">Lacteos</option>
-                    <option value="Proteina">Proteina</option>
+                  <label for="">Selecciona el tipo de producto</label>
+                  <select class="form-select mb-3" aria-label="Disabled select example"  [(ngModel)]="Ps.Producto.tipo ">
+                    <!-- <option selected >Seleccionar el tipo de producto</option> -->
+                    <option [value]="tipo" *ngFor="let tipo of Ps.item" [ngValue]="tipo">{{tipo}}</option>
                   </select>
+                  {{Ps.Producto.tipo}}
                   <div class="mb-3">
-                    <label for="formFileSm" class="form-label labels col-8">Suba una imagen</label>
+                    <label for="formFileSm" class="form-label labels col-8" >Suba una imagen</label>
                     <input  class="form-control form-control-sm" id="formFileSm" type="file" accept=".jpg , .png, .jpeg" >
                   </div>
                   <div class="mb-3">
                     <label for="precio" class="form-label">Precio</label>
-                    <input type="number" class="form-control" id="precio" placeholder="Ingrese el precio del producto">
+                    <input type="number" class="form-control" id="precio" placeholder="Ingrese el precio del producto" [(ngModel)]="Ps.Producto.precio">
                   </div>
                   <div class="mb-3">
                     <label for="Cantidad" class="form-label">Cantidad</label>
-                    <input type="number" class="form-control" id="Cantidad" placeholder="Ingrese la cantidad disponible">
+                    <input type="number" class="form-control" id="Cantidad" placeholder="Ingrese la cantidad disponible" [(ngModel)]="Ps.Producto.cantidad">
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Ingrese una descripción del producto" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Ingrese una descripción del producto" rows="3" [(ngModel)]="Ps.Producto.descripcion"></textarea>
                   </div>
-            </form> 
+            <!-- </form>  -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

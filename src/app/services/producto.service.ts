@@ -9,8 +9,29 @@ import { FreshcampoService } from './freshcampo.service';
   providedIn: 'root'
 })
 export class ProductoService {
-  producto:Producto[]=[];
+  // producto:Producto[]=[];
+  // produ=
+  fechaActuall:any=''
   Pro:any[]=[];
+  Producto:any={
+    ClienteId:'',
+    nombre:'',
+    descripcion:'',
+    precio:0,
+    cantidad:0,
+    img:'',
+    tipo:'',
+    fecha:'',
+    estado:'',
+  }
+
+  item:any=[
+    'Verduras',
+    'Granos',
+    'Frutas',
+    'Lacteos',
+    'Proteninas'
+  ]
 
   idc:any=localStorage.getItem('idUser'); 
   
@@ -66,6 +87,12 @@ export class ProductoService {
           }  
         })
       }
+    })
+  }
+
+  crearProducto(){
+    this.postProducto(this.Producto).subscribe((data:any)=>{
+      console.log(data)
     })
   }
   
