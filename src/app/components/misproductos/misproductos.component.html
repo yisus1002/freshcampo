@@ -1,9 +1,9 @@
 <div class="container-fluid mt-2" *ngIf="(auth.isAuthenticated$  | async)">
     <h1 class="text-center h4">Mis Productos</h1>
-    <button class="btn btn-primary rounded-circle mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Publicar">
+    <button class="btn btn-primary rounded-circle mb-2 position-fixed" style="z-index: 2;" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Publicar">
         <i class="fas fa-plus"></i>
     </button>
-
+    <app-producto *ngIf="Ps.Pro.length >0 "></app-producto>
     
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -27,7 +27,7 @@
                   {{Ps.Producto.tipo}}
                   <div class="mb-3">
                     <label for="formFileSm" class="form-label labels col-8" >Suba una imagen</label>
-                    <input  class="form-control form-control-sm" id="formFileSm" type="file" accept=".jpg , .png, .jpeg" >
+                    <input  class="form-control form-control-sm" id="formFileSm" type="file" accept=".jpg , .png, .jpeg"  (change)="cargimg.cargarImagen($event)" >
                   </div>
                   <div class="mb-3">
                     <label for="precio" class="form-label">Precio</label>
@@ -45,13 +45,13 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-primary" (click)="Guardar()">Guardar</button>
         </div>
       </div>
     </div>
   </div>
 
-    <div class="container d-flex align-items-center justify-content-center rounded-4 shadow-lg" style="height: 40vh ;">
+    <div *ngIf="Ps.Pro.length ===0 " class="container d-flex align-items-center justify-content-center rounded-4 shadow-lg" style="height: 40vh ;">
         <div class="letra"> 
             Aun no se ha hecho una publicación 
         <span class="placeholder col-6"></span>

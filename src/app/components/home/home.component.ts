@@ -1,3 +1,4 @@
+import { ProductoService } from './../../services/producto.service';
 import { Router } from '@angular/router';
 import { Cliente } from './../../models/cliente';
 import { FreshcampoService } from './../../services/freshcampo.service';
@@ -14,9 +15,13 @@ export class HomeComponent implements OnInit {
   
   constructor(
     private freshcampoService: FreshcampoService,
-    public router: Router
+    public router: Router,
+    public PS: ProductoService 
 
-  ) { }
+  ) {
+    this.PS.listarproductos()
+
+   }
 
   ngOnInit(): void {
   }

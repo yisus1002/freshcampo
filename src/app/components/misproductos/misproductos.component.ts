@@ -1,3 +1,4 @@
+import { CargarImagenService } from './../../services/cargar-imagen.service';
 import { ProductoService } from './../../services/producto.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { Component, OnInit } from '@angular/core';
@@ -10,10 +11,17 @@ import { Component, OnInit } from '@angular/core';
 export class MisproductosComponent implements OnInit {
 
   constructor(public auth: AuthService,
-              public Ps: ProductoService) { }
+              public Ps: ProductoService,
+              public cargimg:CargarImagenService) {
+                this.Ps.verproducto()
+               }
 
   ngOnInit(): void {
-    this.Ps.verproducto()
+    // this.Ps.verproducto()
+
+  }
+  Guardar(){
+    this.Ps.crearProducto();
   }
 
 }

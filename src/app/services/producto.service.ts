@@ -1,9 +1,11 @@
+import { CargarImagenService } from './cargar-imagen.service';
 import { Producto } from './../models/producto';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FreshcampoService } from './freshcampo.service';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,12 @@ import { FreshcampoService } from './freshcampo.service';
 export class ProductoService {
   // producto:Producto[]=[];
   // produ=
-  fechaActuall:any=''
+
+  today: Date = new Date();
+  pipe = new DatePipe('en-US');
+  fechaActuall:any = null; 
+
+
   Pro:any[]=[];
   Producto:any={
     ClienteId:'',
@@ -21,8 +28,8 @@ export class ProductoService {
     cantidad:0,
     img:'',
     tipo:'',
-    fecha:'',
-    estado:'',
+    fecha:this.pipe.transform(Date.now(), 'dd/MM/yyyy') ,
+    estado:true,
   }
 
   item:any=[
@@ -39,11 +46,12 @@ export class ProductoService {
 
   constructor(private http:HttpClient,
               private auth:AuthService,
-              private us: FreshcampoService) {
+              private us: FreshcampoService,
+              public cimg: CargarImagenService,) {
                 this.idc=JSON.parse(this.idc); 
                 console.log('El servicio producto esta listo '+ this.idc)
                 // this.verproducto()
-                this.listarproductos()
+                // this.listarproductos()
                 
                }
   public getProductoCliente(id:any):Observable<Producto[]>{
@@ -70,8 +78,10 @@ export class ProductoService {
   
   
   verproducto(){
+    this.Pro=[]
     this.getProductoCliente(this.idc).subscribe((data:any)=>{
-      console.log(data)
+      this.Pro=data
+      console.log(this.Pro)
     })
   }
 
