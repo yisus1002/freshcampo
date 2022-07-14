@@ -17,20 +17,21 @@
       <div class="card-text d-flex justify-content-between">
         <small class="text-muted">{{pro.fecha}}</small> 
         <div class="">
-            <small class="text-muted mx-2 " style="font-size: .76rem;">Jesus david</small>
+            <small class="text-muted mx-2 " style="font-size: .76rem;"  >{{pro.ClienteId}}</small>
             <button type="button " class="btn btn-sm p-0  border-0 " style="overflow: hidden;">
                 <img src="https://i.ibb.co/SrKrzrC/logo.png" class="img-fluid rounded-circle shadow-sm" style="border-radius: 100%; overflow: hidden; width: 20px; height: 20px;" alt="usuario">
             </button>
         </div> 
       </div>
-      <p class="card-text d-flex justify-content-center">
-        <button class="btn btn-sm m-1 btn-success" title="Detalle"><i class="fas fa-eye"></i></button>
-        <button class="btn btn-sm m-1 btn-info" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-      </p>
+      <div class="card-text d-flex justify-content-center" *ngIf="pro.ClienteId===id">
+        {{pro.idc}}
+        <button class="btn btn-sm m-1 btn-outline-success" title="Detalle"><i class="fas fa-eye"></i></button>
+        <button class="btn btn-sm m-1 btn-outline-info" title="Editar"><i class="fas fa-pencil-alt"></i></button>
+        <button class="btn btn-sm m-1 btn-outline-danger" title="ELimiar"><i class="fas fa-trash-alt"></i></button>
+      </div>
     </div>
   </div> 
 
   </div>
 
 </div>
-

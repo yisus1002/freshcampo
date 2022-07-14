@@ -1,7 +1,6 @@
 import { FreshcampoService } from './freshcampo.service';
 import { Injectable } from '@angular/core'; 
-import { Storage, ref, uploadBytes, listAll, getDownloadURL } from '@angular/fire/storage'; 
-import Swal from 'sweetalert2';
+import { Storage } from '@angular/fire/storage';  
 import firebase from 'firebase/compat/app';
 import { environment } from 'src/environments/environment';
 import 'firebase/compat/storage'; 
@@ -47,10 +46,12 @@ export class CargarImagenService {
         // console.log(reader.result);
         this.imagenes.push(reader.result);
         this.subirImagen(nombre + "_" + Date.now(), reader.result).then(urlImagen => {  
+          this.images=[]
           this.images.push(urlImagen);
           this.activo=false;
           this.habilitar=false;
-          console.log(urlImagen);
+          // console.log(urlImagen);
+          console.log(this.images)
         }); 
       }
     }

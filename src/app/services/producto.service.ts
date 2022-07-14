@@ -10,9 +10,7 @@ import { DatePipe } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductoService {
-  // producto:Producto[]=[];
-  // produ=
+export class ProductoService { 
 
   today: Date = new Date();
   pipe = new DatePipe('en-US');
@@ -30,6 +28,7 @@ export class ProductoService {
     tipo:'',
     fecha:this.pipe.transform(Date.now(), 'dd/MM/yyyy') ,
     estado:true,
+    cliente:[]
   }
 
   item:any=[
@@ -49,9 +48,7 @@ export class ProductoService {
               private us: FreshcampoService,
               public cimg: CargarImagenService,) {
                 this.idc=JSON.parse(this.idc); 
-                console.log('El servicio producto esta listo '+ this.idc)
-                // this.verproducto()
-                // this.listarproductos()
+                console.log('El servicio producto esta listo '+ this.idc) 
                 
                }
   public getProductoCliente(id:any):Observable<Producto[]>{
@@ -92,17 +89,30 @@ export class ProductoService {
           if(dat.length >0){ 
             for(var i=0;i<dat.length;i++){ 
               this.Pro.push(dat[i]) 
-              // console.log(this.Pro)
             }
-          }  
+          } 
         })
       }
     })
   }
 
   crearProducto(){
-    this.postProducto(this.Producto).subscribe((data:any)=>{
+    this.Producto['img']=this.cimg.images
+    const CProducto = new Producto(
+      this.Producto['ClienteId'],
+      this.Producto['nombre'],
+      this.Producto['descripcion'],
+      this.Producto['precio'],
+      this.Producto['cantidad'],
+      this.Producto['img'],
+      this.Producto['tipo'],
+      this.Producto['fecha'],
+      this.Producto['estado'], 
+    );
+    this.postProducto(CProducto).subscribe((data:any)=>{
       console.log(data)
+
+      this.verproducto()
     })
   }
   

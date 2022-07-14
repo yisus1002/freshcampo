@@ -8,9 +8,9 @@ import { ProductoService } from 'src/app/services/producto.service';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-  
-anio:any;
-constructor(public pro:ProductoService) {
+  id:any='';
+  anio:any;
+constructor(public pro:ProductoService,) {
   this.anio= new Date();
   // console.log(pro.Pro) 
  }
@@ -19,5 +19,6 @@ constructor(public pro:ProductoService) {
  todayWithPipe:any = null;
  ngOnInit(): void {
    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy');
+   this.id=(this.pro.idc)
  }
 }

@@ -19,6 +19,7 @@ export class MisproductosComponent implements OnInit {
   ngOnInit(): void {
     // this.Ps.verproducto()
 
+
   }
   Guardar(){
     this.Ps.crearProducto();
