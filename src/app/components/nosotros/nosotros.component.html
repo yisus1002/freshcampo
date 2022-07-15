@@ -1,12 +1,17 @@
 <div class="container-fluid   p-0 m-0">
     <!-- <p>nosotros works!</p> -->
-    <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+    <div  id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
         <div class="carousel-inner border bg-warning" style="height: 60vh;">
           <div class="carousel-item active alto ">
             <img src="https://www.caracteristicas.co/wp-content/uploads/2016/04/campo-1-e1558303217442-800x400.jpg" class="alto img-fluid img" alt="..." >
             <div class="carousel-caption  d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
+              <!-- <h5>First slide label</h5> -->
+              <p>Somos una organizacion encargada de conectar al sector primario productor campesino, entregando productos frescos a consumidores finales</p>
             </div>
           </div>
           <div class="carousel-item alto">
@@ -24,11 +29,12 @@
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -42,15 +48,15 @@
               </div>
               <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                <input type="text" class="form-control" required id="nombre" placeholder="Ingrese su nombre">
               </div>   
               <div class="mb-3">
                 <label for="email" class="form-label">Correo</label>
-                <input type="email" class="form-control" id="email" placeholder="Ingrese su correo">
+                <input type="email" class="form-control" required id="email" placeholder="Ingrese su correo">
               </div>   
               <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Ingrese una descripción de su requerimientos" rows="3"></textarea>
+                <textarea class="form-control" required id="exampleFormControlTextarea1" placeholder="Ingrese una descripción de su requerimientos" rows="3"></textarea>
               </div>
               <div class="mb-3 d-flex justify-content-center" >
                 <button type="submit" class="btn btn-success col-10" title="Enviar"><i class="fas fa-paper-plane"></i></button>
