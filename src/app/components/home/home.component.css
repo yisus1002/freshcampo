@@ -1,0 +1,6 @@
+@media screen and (max-width: 576px) {
+.sm-position-fixed{
+    position: relative !important;
+    /* z-index: 2; */
+}
+}

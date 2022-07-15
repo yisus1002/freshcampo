@@ -1,6 +1,6 @@
 <div class="container-fluid d-flex flex-wrap mx-0 mt-2 px-1">
-    <div class="col-12 mb-1 col-sm-2 col-md-2 col-lg-1 col-xl-1"> 
-            <div class="list-group d-flex flex-row flex-sm-column border border-1" style="font-size: .76rem;" >
+    <div class="col-12 mb-1 col-sm-2 col-md-2 col-lg-1 col-xl-1 " style="z-index: 2;"> 
+            <div class="sm-position-fixed position-fixed col-sm-2 col-md-2 col-lg-1 col-xl-1 list-group d-flex flex-row flex-sm-column border border-1" style="font-size: .76rem;" >
                 <button type="button" class="px-1 text-center list-group-item list-group-item-action" [ngClass]="{'active' : filtro=='Todos'}"(click)="filtrar('Todos')" aria-current="true">Todos</button>
                 <button type="button" class="px-1 text-center list-group-item list-group-item-action" [ngClass]="{'active' : filtro=='verduras'}"(click)="filtrar('verduras')">verduras</button>
                 <button type="button" class="px-1 text-center list-group-item list-group-item-action" [ngClass]="{'active' : filtro=='Granos'}"(click)="filtrar('Granos')">Granos</button>
@@ -9,12 +9,12 @@
                 <button type="button" class="px-1 text-center list-group-item list-group-item-action" [ngClass]="{'active' : filtro=='Proteina'}"(click)="filtrar('Proteina')">Proteina</button>
             </div> 
     </div>
-    <app-producto class="container col-12 col-sm-10 col-md-10 col-lg-7"></app-producto>
-    <div class="d-none d-lg-block col-12 col-lg-4 border bg-dark text-white">
-        <app-mapa></app-mapa>
+    <app-producto class="container col-12 col-sm-10 col-md-10 col-lg-7 "></app-producto>
+    <div class="d-none d-lg-block col-12 col-lg-4" style="position: relative; z-index: -1;">
+        <app-mapa class="position-fixed  shadow rounded-2 col-lg-4" style="height:79vh; "></app-mapa>
     </div>
 
 </div>
-<button class="btn btn-sm btn-primary sticky-bottom rounded-circle mx-2 mt-2 d-lg-none d-lg-block" style="">
+<button class="btn btn-primary sticky-bottom rounded-circle mx-2 mt-2 d-lg-none d-lg-block" style="">
     <i class="fas fa-map"></i>
 </button>
