@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FreshcampoService } from './freshcampo.service';
 import { DatePipe } from '@angular/common';
+import Swal from 'sweetalert2'; 
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,10 @@ export class ProductoService {
 
   today: Date = new Date();
   pipe = new DatePipe('en-US');
-  fechaActuall:any = null; 
+  fechaActuall:any = null;  
 
+
+  publicar:any=''
 
   Pro:any[]=[];
   Producto:any={
@@ -27,8 +30,7 @@ export class ProductoService {
     img:'',
     tipo:'',
     fecha:this.pipe.transform(Date.now(), 'dd/MM/yyyy') ,
-    estado:true,
-    cliente:[]
+    estado:true, 
   }
 
   item:any=[
@@ -62,8 +64,8 @@ export class ProductoService {
     return this.http.post<any>(`${this.api}${this.idc}/Producto`, producto);
   }
 
-  public putProducto(id:any, producto:Producto, idp:any):Observable<any>{
-    return this.http.put<any>(`${this.api}${id}/Producto/${idp}`,producto)
+  public putProducto(producto:Producto, idp:any):Observable<any>{
+    return this.http.put<any>(`${this.api}${this.idc}/Producto/${idp}`,producto)
   }
   
   public delProducto(id:any,idp:any):Observable<any>{
@@ -83,12 +85,17 @@ export class ProductoService {
   }
 
   listarproductos(){
+    this.Pro=[]
     this.us.getCliente().subscribe((dat:any)=>{
       for(var i=0;i<dat.length;i++){ 
         this.getProductoCliente(i+1).subscribe((dat:any)=>{
           if(dat.length >0){ 
             for(var i=0;i<dat.length;i++){ 
-              this.Pro.push(dat[i]) 
+              this.Pro.push(dat[i])
+              // const  producto= dat.find(
+              //   (elem:any )=> elem ===dat[i])
+              //   if(!producto){
+              //   }
             }
           } 
         })
@@ -112,6 +119,43 @@ export class ProductoService {
     this.postProducto(CProducto).subscribe((data:any)=>{
       console.log(data)
 
+      this.verproducto()
+    })
+  }
+
+  elimminarproducto(idp:any){ 
+    Swal.fire({
+      title: '¿Desea eliminar el producto ?', 
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.delProducto(this.idc, idp).subscribe((dat:any)=>{
+          console.log(dat)
+          Swal.fire(
+            'Deleted!',
+            'El producto ha sido borrado',
+            'success'
+          )
+          this.verproducto()
+        })
+      }
+    })
+  }
+  editarProducto(){
+    if(this.cimg.images.length === 0){
+      this.editar()
+    }else{
+      this.Producto['img']=this.cimg.images
+      this.editar()
+    }
+  }
+  editar(){
+    this.putProducto(this.Producto,this.Producto['idproducto']).subscribe((dat:any)=>{
+      console.log(dat)
       this.verproducto()
     })
   }

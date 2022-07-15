@@ -24,10 +24,9 @@
         </div> 
       </div>
       <div class="card-text d-flex justify-content-center" *ngIf="pro.ClienteId===id">
-        {{pro.idc}}
-        <button class="btn btn-sm m-1 btn-outline-success" title="Detalle"><i class="fas fa-eye"></i></button>
-        <button class="btn btn-sm m-1 btn-outline-info" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-        <button class="btn btn-sm m-1 btn-outline-danger" title="ELimiar"><i class="fas fa-trash-alt"></i></button>
+        <!-- <button class="btn btn-sm m-1 btn-outline-success" title="Detalle"><i class="fas fa-eye"></i></button> -->
+        <button class="btn btn-sm m-1 btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="Editar(pro.ClienteId,pro.idproducto) " title="Editar"><i class="fas fa-pencil-alt"></i></button>
+        <button class="btn btn-sm m-1 btn-outline-danger" (click)="Eliminar(pro.idproducto)" title="ELimiar"><i class="fas fa-trash-alt"></i></button>
       </div>
     </div>
   </div> 

@@ -1,6 +1,7 @@
 <div class="container-fluid mt-2" *ngIf="(auth.isAuthenticated$  | async)">
   <h1 class="text-center h4">Mis Productos</h1>
-  <button class="btn btn-primary rounded-circle mb-2 position-fixed" style="z-index: 2;" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Publicar">
+  <button class="btn btn-primary rounded-circle mb-2 position-fixed" style="z-index: 2;" data-bs-toggle="modal" data-bs-target="#exampleModal"
+      (click)="Ps.publicar='Publicar'" title="Publicar">
       <i class="fas fa-plus"></i>
   </button>
   <app-producto *ngIf="Ps.Pro.length >0 "></app-producto>
@@ -10,7 +11,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar un producto</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{Ps.publicar}} un producto</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -23,7 +24,7 @@
                 <select class="form-select mb-3" aria-label="Disabled select example"  [(ngModel)]="Ps.Producto.tipo "> 
                   <option [value]="tipo" *ngFor="let tipo of Ps.item" [ngValue]="tipo">{{tipo}}</option>
                 </select>
-                {{Ps.Producto.tipo}}
+                <!-- {{Ps.Producto.tipo}} -->
                 <div *ngIf="cargimg.activo "class="spinner-grow col-2 text-success " role="status">
                   <span class="visually-hidden">Loading...</span>
                 </div>
@@ -47,8 +48,9 @@
           <!-- </form>  -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="cargimg.habilitar" (click)="Guardar()">Guardar</button>
+        <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-secondary" *ngIf="Ps.publicar==='Editar'" data-bs-dismiss="modal" (click)="Editar()">Guardar</button>
+        <button type="button" class="btn btn-primary"   *ngIf="Ps.publicar==='Publicar'" data-bs-dismiss="modal" [disabled]="cargimg.habilitar" (click)="Guardar()">Guardar</button>
       </div>
     </div>
   </div>

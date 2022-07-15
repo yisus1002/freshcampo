@@ -16,13 +16,13 @@ export class MisproductosComponent implements OnInit {
                 this.Ps.verproducto()
                }
 
-  ngOnInit(): void {
-    // this.Ps.verproducto()
-
-
+  ngOnInit(): void {  
   }
   Guardar(){
     this.Ps.crearProducto();
+  }
+  Editar(){
+    this.Ps.editarProducto();
   }
 
 }
