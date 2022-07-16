@@ -16,8 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private freshcampoService: FreshcampoService,
     public router: Router,
-    public PS: ProductoService 
-
+    public PS: ProductoService ,
   ) {
     this.PS.listarproductos()
 
@@ -27,9 +26,9 @@ export class HomeComponent implements OnInit {
   }
 
   filtrar(val:any){
-    this.filtro =''
-    this.filtro = val
-
+    this.PS.filtro =''
+    this.PS.filtro = val
+    this.PS.listarproductos();
   }
 
 }

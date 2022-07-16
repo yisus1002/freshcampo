@@ -18,7 +18,7 @@ export class ProductoService {
   fechaActuall:any = null;  
 
 
-  publicar:any=''
+  publicar:any=false
 
   Pro:any[]=[];
   Producto:any={
@@ -33,12 +33,16 @@ export class ProductoService {
     estado:true, 
   }
 
+  loading:any=''
+  filtro:string= 'Todos'
+  termino:string=''
+
   item:any=[
     'Verduras',
     'Granos',
     'Frutas',
     'Lacteos',
-    'Proteninas'
+    'Proteinas'
   ]
 
   idc:any=localStorage.getItem('idUser'); 
@@ -50,8 +54,7 @@ export class ProductoService {
               private us: FreshcampoService,
               public cimg: CargarImagenService,) {
                 this.idc=JSON.parse(this.idc); 
-                console.log('El servicio producto esta listo '+ this.idc) 
-                
+                console.log('El servicio producto esta listo '+ this.idc)  
                }
   public getProductoCliente(id:any):Observable<Producto[]>{
     return this.http.get<Producto[]>(`${this.api}${id}/Producto`);
@@ -73,7 +76,9 @@ export class ProductoService {
 
   }
   
-  
+  buscar(){
+
+  }
   
   
   verproducto(){
@@ -85,17 +90,22 @@ export class ProductoService {
   }
 
   listarproductos(){
+    this.loading= true
     this.Pro=[]
     this.us.getCliente().subscribe((dat:any)=>{
       for(var i=0;i<dat.length;i++){ 
         this.getProductoCliente(i+1).subscribe((dat:any)=>{
           if(dat.length >0){ 
-            for(var i=0;i<dat.length;i++){ 
-              this.Pro.push(dat[i])
-              // const  producto= dat.find(
-              //   (elem:any )=> elem ===dat[i])
-              //   if(!producto){
-              //   }
+            for(var i=0;i<dat.length;i++){
+              let tipo = dat[i]['tipo']
+              if(this.filtro.toUpperCase()===tipo.toUpperCase()){
+                this.Pro.push(dat[i])
+                this.loading= false
+              }else if(this.filtro.toUpperCase()==='TODOS'){
+                this.Pro.push(dat[i])
+                this.loading= false
+              }
+              this.loading= false
             }
           } 
         })
