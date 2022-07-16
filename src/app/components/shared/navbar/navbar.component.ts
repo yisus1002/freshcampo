@@ -1,3 +1,4 @@
+import { ProductoService } from './../../../services/producto.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 // import { ActivatedRoute } from '@angular/router';
@@ -17,15 +18,12 @@ export class NavbarComponent implements OnInit {
   constructor(
     public router: Router,
     public auth: AuthService,
-    public fs:FreshcampoService) { }
-    
-    
-    
+    public fs:FreshcampoService,
+    public Pro:ProductoService) { }
     
     loginWithRedirect(){
       this.auth.loginWithRedirect();
     }
-    // this.router.navigate([`/${ruta}`])
 
     navegar(ruta:any){
 

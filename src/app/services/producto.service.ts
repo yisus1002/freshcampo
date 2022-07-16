@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CargarImagenService } from './cargar-imagen.service';
 import { Producto } from './../models/producto';
 import { AuthService } from '@auth0/auth0-angular';
@@ -21,6 +22,7 @@ export class ProductoService {
   publicar:any=false
 
   Pro:any[]=[];
+  aux:any[]=[];
   Producto:any={
     ClienteId:'',
     nombre:'',
@@ -52,7 +54,8 @@ export class ProductoService {
   constructor(private http:HttpClient,
               private auth:AuthService,
               private us: FreshcampoService,
-              public cimg: CargarImagenService,) {
+              public cimg: CargarImagenService,
+              public router: Router) {
                 this.idc=JSON.parse(this.idc); 
                 console.log('El servicio producto esta listo '+ this.idc)  
                }
@@ -75,9 +78,23 @@ export class ProductoService {
     return this.http.delete<any>(`${this.api}${id}/Producto/${idp}`)
 
   }
-  
-  buscar(){
 
+  buscar(termino:string){
+    this.router.navigate(['/home']) 
+    let productoArr:any[]=[]
+    termino=termino.toUpperCase()
+    for(let i=0; i< this.Pro.length; i ++){
+      let producto=this.Pro[i];
+      let nombre = producto.nombre.toUpperCase()
+      if(nombre.indexOf(termino)>=0){
+        producto.idproducto=i;
+        productoArr.push(producto)
+      }
+    }
+    this.Pro=productoArr
+    if(termino ===''){
+      this.Pro=this.aux
+    }
   }
   
   
@@ -100,9 +117,11 @@ export class ProductoService {
               let tipo = dat[i]['tipo']
               if(this.filtro.toUpperCase()===tipo.toUpperCase()){
                 this.Pro.push(dat[i])
+                this.aux.push(dat[i])
                 this.loading= false
               }else if(this.filtro.toUpperCase()==='TODOS'){
                 this.Pro.push(dat[i])
+                this.aux.push(dat[i])
                 this.loading= false
               }
               this.loading= false
