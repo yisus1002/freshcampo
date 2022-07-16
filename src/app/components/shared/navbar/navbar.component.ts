@@ -13,6 +13,7 @@ import { FreshcampoService } from 'src/app/services/freshcampo.service';
 export class NavbarComponent implements OnInit {
 
   rol:any=0;
+  cambiar:boolean=false;
   autentificado:boolean=true; 
   ActivatedRoute: any;
   constructor(
@@ -34,6 +35,10 @@ export class NavbarComponent implements OnInit {
           this.loginWithRedirect() 
         }
       })
+    }
+    camb(){
+      this.cambiar =!this.cambiar
+
     }
 
 

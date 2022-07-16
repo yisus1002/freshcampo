@@ -16,17 +16,18 @@
           <button type="button" (click)="loginWithRedirect()"  class="btn btn-sm btn-outline-success rounded-circle fw-bold mx-1 d-flex align-items-center" style="height: 30px; margin: auto;" title="Login"><i class="fas fa-user"></i></button>
         </form>
         <app-avatar *ngIf="(auth.isAuthenticated$  | async)" style=" margin: auto;" ></app-avatar>
-        <button class="navbar-toggler d-md-none ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="text-dark fas fa-ellipsis-v"></i>
+        <button class="navbar-toggler d-md-none ms-1 border border-0 p-1" type="button" (click)="cambiar =!cambiar" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" >
+          <i *ngIf="cambiar==false" class="text-dark fas fa-ellipsis-v"></i>
+          <i *ngIf="cambiar===true" class="text-danger fas fa-times"></i>
         </button>
       </div>
 
      </div>
      <div class="col-12 ">
       
-       <div class="collapse navbar-collapse  align-items-center justify-content-center" id="navbarNavAltMarkup"  >
+       <div class="collapse navbar-collapse mt-2 m-md-1 m-lg-0 align-items-center justify-content-center" id="navbarNavAltMarkup"  >
         <div class="navbar-nav nav-tabs">
-          <a class="nav-link" aria-current="page" routerLinkActive="active"  [routerLink]="['home']" title="Inicio">Inicio</a>
+          <a class="nav-link"  aria-current="page" routerLinkActive="active"  [routerLink]="['home']" title="Inicio">Inicio</a>
           <a class="nav-link"  routerLinkActive="active" [routerLink]="['nosotros']"  title="Nosotros">Nosotros</a> 
           <a class="nav-link"  routerLinkActive="active" [routerLink]="['misproductos']" (click)="navegar('misproductos')" title="Mis Productos">Mis productos</a>
           <a class="nav-link"  routerLinkActive="active" [routerLink]="['cliente']" title="Usuarios" *ngIf="(auth.isAuthenticated$  | async) && fs.id===1">Usuarios</a>

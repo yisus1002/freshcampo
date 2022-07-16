@@ -5,7 +5,7 @@
                 <button type="button" class="px-1 text-center list-group-item list-group-item-action" *ngFor="let item of PS.item" [ngClass]="{'active' : PS.filtro==item}"(click)="filtrar(item)">{{item}}</button>
             </div> 
     </div>
-    <app-producto class="container col-12 col-sm-10 col-md-10 col-lg-7 "></app-producto>
+    <app-producto class="container col-12 col-sm-10 col-md-10 col-lg-7 " style="min-height: 50vh;"></app-producto>
     <div class="d-none d-lg-block col-12 col-lg-4" style="position: relative; z-index: -1;">
         <app-mapa class="position-fixed  shadow rounded-2 col-lg-4" style="height:79vh; "></app-mapa>
     </div>
