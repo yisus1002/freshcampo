@@ -110,7 +110,7 @@ export class CarritoServiceService {
     setTimeout(() => {
       // console.log('hola')
       this.vermicarrito();
-    }, 830);
+    }, 900);
   }
   vermicarrito(){
      this.ar=[]
