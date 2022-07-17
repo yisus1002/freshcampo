@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,8 @@ export class CarritoServiceService {
   arr:any[]=[]
   ar:any[] =[]
   constructor(public http:HttpClient,
-              public pro: ProductoService) {
+              public pro: ProductoService,
+              public auth:AuthService) {
     this.idcliente=JSON.parse(this.idcliente)
    }
 
@@ -78,21 +80,27 @@ export class CarritoServiceService {
     // console.log(this.productoelegido)
   }
   agregarcarrito(){
-    let arr:any[]=[]
-    const carrito = new Carrito(
-      this.car['idCliente'],
-      this.car['idProducto'],
-      this.car['cantidad']
-    );
-    this. postCarrito(carrito).subscribe((data)=>{
-      arr=data;
-      Swal.fire({
-        title: 'Se ha añadido a su carrito', 
-        icon: 'success',
-        confirmButtonText: `OK!` , 
-      })
+    this.auth.isAuthenticated$.subscribe((data: any) => {
+      if(data){
+        let arr:any[]=[]
+        const carrito = new Carrito(
+          this.car['idCliente'],
+          this.car['idProducto'],
+          this.car['cantidad']
+        );
+        this. postCarrito(carrito).subscribe((data)=>{
+          arr=data;
+          Swal.fire({
+            title: 'Se ha añadido a su carrito', 
+            icon: 'success',
+            confirmButtonText: `OK!` , 
+          })
+        })
+        // return arr;
+      }else{
+        this.auth.loginWithRedirect()
+      }
     })
-    return arr;
   }
 
   verTodoelcarrito(){

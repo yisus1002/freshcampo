@@ -3,6 +3,7 @@ import { CarritoServiceService } from './../../services/carrito-service.service'
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from 'src/app/services/producto.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-producto',
@@ -13,7 +14,8 @@ export class ProductoComponent implements OnInit {
   id:any='';
   anio:any;
 constructor(public pro:ProductoService,
-            public car:CarritoServiceService) {
+            public car:CarritoServiceService,
+            public auth: AuthService) {
   this.anio= new Date();
   // console.log(pro.Pro) 
  }
@@ -42,9 +44,16 @@ constructor(public pro:ProductoService,
 
  }
  AgregarCarrito(Producto:any){
-  this.car.car.cantidad=1
-  this.car.productoelegido=Producto
-  this.car.agregar()
+  this.auth.isAuthenticated$.subscribe((data:any)=>{
+    if(data){
+      this.car.car.cantidad=1
+      this.car.productoelegido=Producto
+      this.car.agregar()
+    }else{
+      this.auth.loginWithRedirect()
+    }
+  })
+
  }
 
 }
