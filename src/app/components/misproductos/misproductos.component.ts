@@ -14,6 +14,8 @@ export class MisproductosComponent implements OnInit {
               public Ps: ProductoService,
               public cargimg:CargarImagenService) {
                 this.Ps.verproducto()
+                this.Ps.pg=3;
+                console.log( this.Ps.pg)
                }
 
   ngOnInit(): void {  

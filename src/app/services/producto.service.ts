@@ -14,6 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class ProductoService { 
 
+  pg:number=1;
+
   today: Date = new Date();
   pipe = new DatePipe('en-US');
   fechaActuall:any = null;  

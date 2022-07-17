@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit {
     public PS: ProductoService ,
   ) {
     this.PS.listarproductos()
-
+    this.PS.pg=1;
+    console.log(PS.pg)
    }
 
   ngOnInit(): void {
