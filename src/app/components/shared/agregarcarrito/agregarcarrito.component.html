@@ -1,0 +1,26 @@
+
+  <!-- Modal -->
+  <div class="modal fade" id="carrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar al carrito</h5>
+          <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" *ngIf="car.mostrar===true">
+          <div class="mb-3">
+            <label for="cantidad" class="form-label">¿Cuantos va a comprar?</label>
+            <!-- [value]="car.productoelegido" -->
+            <input type="number"  class="form-control" id="cantidad" (keyup)="cantidad(valor.value)"  #valor min="1" [max]="car.productoelegido.cantidad" [value]="car.car.cantidad">
+          </div>
+          <div class="mb-3">
+            <p>Total a pagar: $ {{car.car.cantidad * car.productoelegido.precio}}</p>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+          <button type="button" data-bs-dismiss="modal" class="btn btn-danger" (click)="car.agregarcarrito()">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>

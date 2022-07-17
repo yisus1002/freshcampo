@@ -37,6 +37,7 @@ import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { RolPipe } from './pipes/rol.pipe';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { HistorialComponent } from './components/historial/historial.component';
+import { AgregarcarritoComponent } from './components/shared/agregarcarrito/agregarcarrito.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { HistorialComponent } from './components/historial/historial.component';
     RolPipe,
     MapaComponent,
     CarritoComponent,
-    HistorialComponent
+    HistorialComponent,
+    AgregarcarritoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,5 @@
+import { Producto } from './../../models/producto';
+import { CarritoServiceService } from './../../services/carrito-service.service';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from 'src/app/services/producto.service';
@@ -10,7 +12,8 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class ProductoComponent implements OnInit {
   id:any='';
   anio:any;
-constructor(public pro:ProductoService,) {
+constructor(public pro:ProductoService,
+            public car:CarritoServiceService) {
   this.anio= new Date();
   // console.log(pro.Pro) 
  }
@@ -30,14 +33,18 @@ constructor(public pro:ProductoService,) {
   this.pro.elimminarproducto(id)
  }
 
- Editar(idc:any,idp:any){
-  // console.log(idc+" "+idp)
+ Editar(idc:any,idp:any){ 
   this.pro.publicar ='Editar'
   this.pro.getDetalleProductoCliente(idc,idp).subscribe((dat:any)=>{
     console.log(dat)
     this.pro.Producto = dat 
   })
 
+ }
+ AgregarCarrito(Producto:any){
+  this.car.car.cantidad=1
+  this.car.productoelegido=Producto
+  this.car.agregar()
  }
 
 }

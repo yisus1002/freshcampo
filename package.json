@@ -21,6 +21,7 @@
     "@angular/router": "~13.3.0",
     "@auth0/auth0-angular": "^1.10.0",
     "angular-cli-ghpages": "^1.0.0",
+    "bootstrap": "^5.2.0-beta1",
     "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
     "save": "^2.5.0",

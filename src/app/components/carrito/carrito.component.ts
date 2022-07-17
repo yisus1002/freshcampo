@@ -1,3 +1,4 @@
+import { CarritoServiceService } from './../../services/carrito-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarritoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public carr: CarritoServiceService) { }
 
   ngOnInit(): void {
+    this.carr.verTodoelcarrito(); 
+    // setTimeout(() => {
+    //   console.log('hola')
+    //   this.carr.vermicarrito()
+    // }, 1000);
   }
 
 }
