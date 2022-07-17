@@ -2,7 +2,7 @@ import { ProductoService } from './producto.service';
 import { Carrito } from './../models/carrito';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { finalize, Observable, pipe } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AuthService } from '@auth0/auth0-angular';
 
@@ -105,20 +105,19 @@ export class CarritoServiceService {
 
   verTodoelcarrito(){
     this.arr=[];
-    this.pro.listarproductos()  
-    this.getCarrito().subscribe((data:any)=>{
-      for(var i=0;i<data.length;i++){
-        let id = data[i]['idCliente']
-        if(id === this.idcliente){
-          this.arr.push(data[i])
-          // console.log(this.arr)
-        }
-      }
-    }) 
+    this.pro.listarproductos()
     setTimeout(() => {
-      // console.log('hola')
-      this.vermicarrito();
-    }, 900);
+      this.getCarrito().
+      pipe(finalize (()=> this.vermicarrito()) ).  
+      subscribe((data:any)=>{
+        for(var i=0;i<data.length;i++){
+          let id = data[i]['idCliente']
+          if(id === this.idcliente){
+            this.arr.push(data[i])
+          }
+        }
+      })
+    }, 690);
   }
   vermicarrito(){
      this.ar=[]
@@ -132,7 +131,6 @@ export class CarritoServiceService {
       }
     }
     this.pro.Pro=this.ar
-    // console.log(this.pro.Pro)
 
   }
 

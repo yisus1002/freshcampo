@@ -4,7 +4,7 @@ import { Producto } from './../models/producto';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { finalize, map, Observable } from 'rxjs';
 import { FreshcampoService } from './freshcampo.service';
 import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2'; 
@@ -108,29 +108,42 @@ export class ProductoService {
     })
   }
 
-  listarproductos(){
+ async listarproductos(){
     this.loading= true
-    this.Pro=[]
-    this.us.getCliente().subscribe((dat:any)=>{
-      for(var i=0;i<dat.length;i++){ 
-        this.getProductoCliente(i+1).subscribe((dat:any)=>{
-          if(dat.length >0){ 
+    this.Pro=[] 
+    let auxC:any;
+    // let auxP:any[]=[];
+    this.us.getCliente().
+    pipe(finalize(()=>{  
+      // console.log(auxC)
+      for(var i=0;i<auxC.length;i++){  
+        this.getProductoCliente(auxC[i]['id']).
+        pipe(finalize(()=>{ 
+        })).
+        subscribe((dat:any)=>{
+          if(dat){ 
             for(var i=0;i<dat.length;i++){
               let tipo = dat[i]['tipo']
+              // console.log(tipo)
               if(this.filtro.toUpperCase()===tipo.toUpperCase()){
                 this.Pro.push(dat[i])
                 this.aux.push(dat[i])
                 this.loading= false
               }else if(this.filtro.toUpperCase()==='TODOS'){
-                this.Pro.push(dat[i])
-                this.aux.push(dat[i])
-                this.loading= false
+                  this.Pro.push(dat[i])
+                  this.aux.push(dat[i])
+                  this.loading= false 
               }
               this.loading= false
             }
-          } 
+          }
         })
-      }
+    }
+
+  }
+  ))
+  .subscribe((dat:any)=>{
+      auxC=dat;
     })
   }
 
