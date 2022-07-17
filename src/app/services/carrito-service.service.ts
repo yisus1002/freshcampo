@@ -3,6 +3,7 @@ import { Carrito } from './../models/carrito';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,44 @@ export class CarritoServiceService {
   public getCarrito():Observable<Carrito[]>{
     return this.http.get<Carrito[]>(`${this.api}`)
   }
-  
+  public delCarrito(id:any):Observable<any>{
+    return this.http.delete<any>(`${this.api}/${id}`)
+  }
+ 
+  borrar(idp:any){
+    console.log(idp)
+    this.getCarrito().subscribe((dat:any)=>{
+     if(dat){ 
+      let pro= dat.filter((Element:any )=> Element.idProducto===idp)
+      if(pro){
+        console.log(pro[0].id)
+         Swal.fire({
+          title: '¿Desea eliminar el producto ?', 
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Eliminar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.delCarrito(pro[0].id).subscribe((dat:any)=>{
+              console.log(dat)
+              setTimeout(()=>{
+                Swal.fire(
+                  'Deleted!',
+                  'El producto ha sido borrado',
+                  'success'
+                )
+                this.verTodoelcarrito()
+              }, 300)
+            })
+          }
+        })
+      }
+     }
+    })
+  }
+  // eliminar
   agregar(){
     this.car['idProducto']=this.productoelegido.idproducto; 
     // console.log(this.car)
@@ -48,7 +86,11 @@ export class CarritoServiceService {
     );
     this. postCarrito(carrito).subscribe((data)=>{
       arr=data;
-      // console.log(data);
+      Swal.fire({
+        title: 'Se ha añadido a su carrito', 
+        icon: 'success',
+        confirmButtonText: `OK!` , 
+      })
     })
     return arr;
   }
@@ -61,14 +103,14 @@ export class CarritoServiceService {
         let id = data[i]['idCliente']
         if(id === this.idcliente){
           this.arr.push(data[i])
-          console.log(this.arr)
+          // console.log(this.arr)
         }
       }
     }) 
     setTimeout(() => {
-      console.log('hola')
+      // console.log('hola')
       this.vermicarrito();
-    }, 700);
+    }, 830);
   }
   vermicarrito(){
      this.ar=[]
@@ -82,7 +124,7 @@ export class CarritoServiceService {
       }
     }
     this.pro.Pro=this.ar
-    console.log(this.pro.Pro)
+    // console.log(this.pro.Pro)
 
   }
 
