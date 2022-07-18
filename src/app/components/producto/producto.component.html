@@ -3,7 +3,7 @@
   <div class="card border-0 shadow "  >
     <img [src]="prod.img+'/'+i" class="p-1 col-12" [alt]="prod.tipo" style="overflow: hidden;">
     <div class="col-12 card-body">
-      <h6 class="card-title p-0 d-flex justify-content-between ">{{prod.nombre}}<span style="font-size: 12px;" class="  bg-primary rounded-4 p-1 text-white">{{prod.tipo}}</span> </h6>
+      <h6 class="card-title p-0 d-flex justify-content-between ">{{prod.nombre}} <span  class="badge text-bg-primary text-white">{{prod.tipo}}</span></h6>
       <p class="card-text">{{prod.descripcion}}</p>
       <div class="" *ngIf="pro.pg===1">
         <p class="card-text my-1">Cantidad disponible: <span>{{prod.cantidad}}</span></p>
