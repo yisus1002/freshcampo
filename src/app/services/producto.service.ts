@@ -95,6 +95,7 @@ export class ProductoService {
     }
     this.Pro=productoArr
     if(termino ===''){
+      this.Pro=[]
       this.Pro=this.aux
     }
   }
