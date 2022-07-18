@@ -5,8 +5,16 @@
     <div class="col-12 card-body">
       <h6 class="card-title p-0 d-flex justify-content-between ">{{prod.nombre}}<span style="font-size: 12px;" class="  bg-primary rounded-4 p-1 text-white">{{prod.tipo}}</span> </h6>
       <p class="card-text">{{prod.descripcion}}</p>
-      <p class="card-text my-1">Cantidad disponible: <span>{{prod.cantidad}}</span></p>
-      <p class="card-text my-1">Precio unidad $ <span>{{prod.precio}} <span class="text-muted">COP</span></span></p>
+      <div class="" *ngIf="pro.pg===1">
+        <p class="card-text my-1">Cantidad disponible: <span>{{prod.cantidad}}</span></p>
+        <p class="card-text my-1">Precio unidad $ <span>{{prod.precio}} <span class="text-muted">COP</span></span></p>
+      </div>
+      <div class="" *ngIf="pro.pg===4">
+        <p class="card-text my-1">Cantidad a comprar: <span>{{prod.cantidad}}</span></p>
+        <p class="card-text my-1">Precio total $ <span>{{prod.precio * prod.cantidad }} <span class="text-muted">COP</span></span></p>
+      </div>
+      
+
       <p class="card-text"> 
         <button type="button"  title="Agregar al carrito" *ngIf="prod.ClienteId != id " data-bs-toggle="modal" data-bs-target="#carrito" class="btn btn-sm btn-primary "
         (click)="car.mostrar=true; AgregarCarrito(prod)" >
@@ -24,7 +32,7 @@
           </button>
         </div> 
       </div>
-      <div class="card-text d-flex justify-content-center" *ngIf="prod.ClienteId===id">
+      <div class="card-text d-flex justify-content-center" *ngIf="prod.ClienteId===id && pro.pg===3">
         <!-- <button class="btn btn-sm m-1 btn-outline-success" title="Detalle"><i class="fas fa-eye"></i></button> -->
         <button class="btn btn-sm m-1 btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="Editar(prod.ClienteId,prod.idproducto) " title="Editar"><i class="fas fa-pencil-alt"></i></button>
         <button class="btn btn-sm m-1 btn-outline-danger" (click)="Eliminar(prod.idproducto)" title="ELimiar"><i class="fas fa-trash-alt"></i></button>
