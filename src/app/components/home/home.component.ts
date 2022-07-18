@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   filtro:string = 'Todos'
   Cliente: Cliente[]=[];
-  
+  mostrar:boolean= false;
   constructor(
     private freshcampoService: FreshcampoService,
     public router: Router,

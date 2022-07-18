@@ -6,24 +6,27 @@
             </div> 
     </div>
     <app-producto class="container col-12 col-sm-10 col-md-10 col-lg-7 " style="min-height: 50vh;"></app-producto>
-    <div class="d-none d-lg-block col-12 col-lg-4" style="position: relative; z-index: -1;">
-        <app-mapa class="position-fixed  shadow rounded-2 col-lg-4" style="height:79vh; "></app-mapa>
+    <div class="d-none d-lg-block col-12 col-lg-4 sticky-bottom" >
+        <app-mapa *ngIf="mostrar===false" class="position-fixed  shadow rounded-2 col-lg-4 " style="height:79vh; "></app-mapa>
     </div>
 
 </div>
-<button class="btn btn-primary sticky-bottom rounded-circle mx-2 mt-2 d-lg-none d-lg-block" data-bs-toggle="modal" data-bs-target="#mapa" style="">
+<button class="btn btn-primary sticky-bottom rounded-circle mx-2 mt-2 d-lg-none d-lg-block" data-bs-toggle="modal" data-bs-target="#mapa" style=""
+(click)="mostrar=true">
     <i class="fas fa-map"></i>
 </button>
+
 <!-- Full screen modal -->
 <div id="mapa" class="modal">
     <div class="modal-dialog modal-fullscreen bg-dark">
         <div class="modal-content  text-white bg-dark">
             <!-- <div class="modal-header"> -->
                 <!-- <h5 class="modal-title">Modal title</h5> -->
-                <button type="button" class="btn btn-sm btn-danger position-relative top-0 end-0 " style="width: 30px; " data-bs-dismiss="modal" >x</button>
+                <button type="button" class="btn btn-sm btn-danger position-relative top-0 end-0 " style="width: 30px; " data-bs-dismiss="modal"
+                (click)="mostrar=false" >x</button>
             <!-- </div> -->
-            <div class="modal-body bg-dark p-0">
-                <app-mapa class="m-0 p-0 "></app-mapa>
+            <div class="modal-body p-0"> 
+                  <app-mapa *ngIf="mostrar===true" class="position-fixed  shadow rounded-2 col-12 " style="height:79vh; "></app-mapa>
             </div>
             <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

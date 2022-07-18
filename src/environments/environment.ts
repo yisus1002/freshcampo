@@ -12,7 +12,8 @@ export const environment = {
     authDomain: 'freshcampo-f3236.firebaseapp.com',
     messagingSenderId: '1096615469517',
   },
-  production: false
+  production: false,
+  maxpboxkey:'pk.eyJ1IjoiamVzdXNnMTAwMiIsImEiOiJja3p3N2MxazUxNmE0MnZtaHBjbTVoeDh5In0.t2Af6kwawJdt3b9xYby9Pw'
 };
 
 /*
